@@ -41,7 +41,7 @@ function Text(props){
 }
 class NewText extends React.Component{
   render(){
-    console.log(this.props);
+    console.log(this.props); 
     return(
       <div>
         <span>I like creating</span>
@@ -67,6 +67,7 @@ class User extends React.Component{
     this.setState(state=>({count: ++state.count}))
   }
   render(){
+    console.log(this);
     const {name,age}=this.props;
     const {count}=this.state;
     return(
@@ -96,7 +97,7 @@ class Clock extends React.Component{
    
   }
   componentDidMount() {
-    this.timerId=setInterval(this.tick,1000)
+    this.timerId=setInterval(()=>this.tick(),1000)
   }
 
   componentWillUnmount() {
@@ -104,7 +105,8 @@ class Clock extends React.Component{
   }
 
   render(){
-    let {date}=this.state
+    let {date}=this.state;
+    
     return(
       <div>
         <p>
@@ -117,11 +119,31 @@ class Clock extends React.Component{
     )
   }
 }
+class CalcValue extends React.Component{
+  constructor(props){
+    super(props)
+    this.state={
+      value:0
+    }
+  }
+  render(){
+   
+   
+return(
+  <div>
+    <input id='newValue' className='new value'/>
+    <input id='Value' className='value'/>
+  </div>
+)
+  }
+}
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <CalcValue/>
+        <Clock name="rrrr"/>
         <Clock/>
         <User/>
        <ContentFirst/>
